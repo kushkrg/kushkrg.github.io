@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import HeroFX from '../components/HeroFX.tsx';
 
 const services = [
   {
@@ -177,29 +178,21 @@ const faqSchema = {
 <Base>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-  <!-- HERO -->
+  <!-- HERO (Framer Motion island) -->
   <div class="hero">
-    <div class="wrap">
-      <span class="badge">Available for freelance &amp; full-time roles</span>
-      <h1>Lavkush Kumar<br /><span class="grad">Full Stack <span class="serif">Developer</span></span></h1>
-      <p class="role">React · Next.js · PHP · MERN · Android</p>
-      <p class="lede">
-        I design and build complete digital products — from pixel-perfect React &amp; Next.js
-        front-ends to Strapi, MongoDB &amp; MySQL backends, deployed and shipped end-to-end.
-        I also build Android apps, and still craft Webflow, WordPress &amp; Shopify sites when
-        that's the right tool for the job.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">See My Work</a>
-        <a class="btn btn-pill" href="https://github.com/kushkrg" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="btn btn-ghost" href="#contact">Get in Touch ›</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="num">5+</div><div class="lbl">Years Experience</div></div>
-        <div class="stat"><div class="num">150+</div><div class="lbl">Tutorials Published</div></div>
-        <div class="stat"><div class="num">90+</div><div class="lbl">Course Videos</div></div>
-        <div class="stat"><div class="num">25+</div><div class="lbl">Tech &amp; Tools</div></div>
-      </div>
+    <HeroFX client:load />
+  </div>
+
+  <!-- TECH MARQUEE (GSAP loop) -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      {[0, 1].map(() => (
+        <div class="marquee-group">
+          {['React', 'Next.js', 'PHP', 'MySQL', 'MongoDB', 'Node.js', 'Astro', 'Tailwind CSS', 'WordPress', 'Shopify', 'Android', 'Python'].map((t) => (
+            <span class="marquee-item">{t}<i>✦</i></span>
+          ))}
+        </div>
+      ))}
     </div>
   </div>
 
@@ -293,7 +286,7 @@ const faqSchema = {
       <p class="section-sub">Five years across agencies, startups, an ed-tech platform and a global legal-tech company.</p>
       <div class="timeline">
         {experience.map((job) => (
-          <div class="t-item reveal">
+          <div class="t-item">
             <div class="when">{job.when}</div>
             <h3>{job.role}</h3>
             <div class="org">{job.org}</div>
