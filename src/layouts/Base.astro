@@ -38,6 +38,15 @@ const person = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      try {
+        var saved = localStorage.getItem('lk-theme');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -64,7 +73,13 @@ const person = {
     <header class="site">
       <div class="wrap nav">
         <a class="logo" href="#top">Lavkush<span>.</span></a>
-        <button class="nav-toggle" aria-label="Menu" id="navToggle">☰</button>
+        <div class="nav-right">
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          </button>
+          <button class="nav-toggle" aria-label="Menu" id="navToggle">☰</button>
+        </div>
         <ul class="nav-links" id="navLinks">
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
@@ -95,6 +110,15 @@ const person = {
       links?.querySelectorAll('a').forEach((a) =>
         a.addEventListener('click', () => links.classList.remove('open'))
       );
+
+      const themeBtn = document.getElementById('themeToggle');
+      themeBtn?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try {
+          localStorage.setItem('lk-theme', next);
+        } catch (e) {}
+      });
 
       const year = document.getElementById('year');
       if (year) year.textContent = String(new Date().getFullYear());
