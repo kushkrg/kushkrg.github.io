@@ -60,6 +60,7 @@ const person = {
     <slot name="head" />
   </head>
   <body>
+    <div id="cursorGlow" aria-hidden="true"></div>
     <header class="site">
       <div class="wrap nav">
         <a class="logo" href="#top">Lavkush<span>.</span></a>
@@ -110,6 +111,95 @@ const person = {
         { threshold: 0.12 }
       );
       document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+
+    <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!reduceMotion) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Infinite tech marquee
+        const track = document.querySelector('.marquee-track');
+        if (track) {
+          gsap.to(track, { xPercent: -50, duration: 28, ease: 'none', repeat: -1 });
+        }
+
+        // Experience timeline — staggered slide-in
+        const tItems = document.querySelectorAll('.t-item');
+        if (tItems.length) {
+          gsap.fromTo(
+            tItems,
+            { x: -30, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.85,
+              ease: 'power3.out',
+              stagger: 0.15,
+              scrollTrigger: { trigger: '.timeline', start: 'top 78%', once: true },
+            }
+          );
+        }
+
+        // Section titles — gentle parallax rise
+        document.querySelectorAll('.section-title').forEach((el) => {
+          gsap.fromTo(
+            el,
+            { y: 36 },
+            {
+              y: 0,
+              duration: 1,
+              ease: 'power2.out',
+              scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+            }
+          );
+        });
+
+        // Header gains a shadow after scrolling a little
+        const header = document.querySelector('header.site');
+        ScrollTrigger.create({
+          start: 30,
+          onToggle: (self) => header?.classList.toggle('scrolled', self.isActive),
+        });
+
+        if (window.matchMedia('(pointer: fine)').matches) {
+          // 3D tilt on cards
+          document.querySelectorAll('.card').forEach((card) => {
+            const el = card as HTMLElement;
+            el.addEventListener('mousemove', (e) => {
+              const r = el.getBoundingClientRect();
+              const rotateX = ((e.clientY - r.top) / r.height - 0.5) * -7;
+              const rotateY = ((e.clientX - r.left) / r.width - 0.5) * 7;
+              gsap.to(el, {
+                rotateX,
+                rotateY,
+                transformPerspective: 900,
+                duration: 0.5,
+                ease: 'power2.out',
+              });
+            });
+            el.addEventListener('mouseleave', () => {
+              gsap.to(el, { rotateX: 0, rotateY: 0, duration: 0.8, ease: 'elastic.out(1, 0.5)' });
+            });
+          });
+
+          // Ambient cursor glow
+          const glow = document.getElementById('cursorGlow');
+          if (glow) {
+            gsap.set(glow, { xPercent: -50, yPercent: -50, x: -600, y: -600 });
+            const qx = gsap.quickTo(glow, 'x', { duration: 0.6, ease: 'power3' });
+            const qy = gsap.quickTo(glow, 'y', { duration: 0.6, ease: 'power3' });
+            window.addEventListener('mousemove', (e) => {
+              qx(e.clientX);
+              qy(e.clientY);
+            });
+          }
+        }
+      }
     </script>
   </body>
 </html>
