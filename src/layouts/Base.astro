@@ -1,0 +1,115 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Lavkush Kumar — Full Stack Web Developer (React, Next.js, PHP, MERN)',
+  description = 'Full Stack Web Developer specialising in React, Next.js, PHP and the MERN stack. Marketing Web Developer at CS DISCO and creator of Coding Cush, a free programming-education platform with a YouTube channel and the CodingCush.com blog.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Lavkush Kumar',
+  url: 'https://lavkushkumar.com/',
+  jobTitle: 'Full Stack Web Developer',
+  worksFor: { '@type': 'Organization', name: 'CS DISCO' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Delhi', addressCountry: 'IN' },
+  email: 'mailto:hello@lavkushkumar.com',
+  sameAs: [
+    'https://github.com/kushkrg',
+    'https://www.linkedin.com/in/kushkrg/',
+    'https://x.com/kushkrg',
+    'https://www.instagram.com/codingcush',
+    'https://www.youtube.com/@CodingCush',
+    'https://codingcush.com',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="author" content="Lavkush Kumar" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+    <slot name="head" />
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap nav">
+        <a class="logo" href="#top">Lavkush<span>.</span></a>
+        <button class="nav-toggle" aria-label="Menu" id="navToggle">☰</button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a class="nav-cta" href="#contact">Hire Me</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="top">
+      <slot />
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <span>© <span id="year">2026</span> Lavkush Kumar. Built with Astro.</span>
+        <span>Delhi, India · <a href="https://lavkushkumar.com">lavkushkumar.com</a></span>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('navToggle');
+      const links = document.getElementById('navLinks');
+      toggle?.addEventListener('click', () => links?.classList.toggle('open'));
+      links?.querySelectorAll('a').forEach((a) =>
+        a.addEventListener('click', () => links.classList.remove('open'))
+      );
+
+      const year = document.getElementById('year');
+      if (year) year.textContent = String(new Date().getFullYear());
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
