@@ -1,1 +1,7 @@
-Ly8gQHRzLWNoZWNrCmltcG9ydCB7IGRlZmluZUNvbmZpZyB9IGZyb20gJ2FzdHJvL2NvbmZpZyc7CgovLyBodHRwczovL2FzdHJvLm5ldy9jb25maWcKZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHsKICBzaXRlOiAnaHR0cHM6Ly9rdXNoa3JnLmdpdGh1Yi5pbycsCn0pOwo=
+// @ts-check
+import { defineConfig } from 'astro/config';
+
+// https://astro.new/config
+export default defineConfig({
+  site: 'https://kushkrg.github.io',
+});
