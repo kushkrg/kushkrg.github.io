@@ -405,3 +405,94 @@ footer.site a { color: var(--muted); }
   .creator-band { padding: 30px 22px; }
   .contact-box { padding: 54px 24px; }
 }
+
+/* ============================================================
+   Motion & futuristic layer — GSAP / Framer Motion accents
+   ============================================================ */
+
+/* Aurora drift on the hero light blobs */
+@keyframes drift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(80px, 46px) scale(1.16); }
+}
+@keyframes drift2 {
+  from { transform: translate(0, 0) scale(1.12); }
+  to { transform: translate(-70px, 54px) scale(0.94); }
+}
+.hero::before { animation: drift1 15s ease-in-out infinite alternate; }
+.hero::after { animation: drift2 19s ease-in-out infinite alternate; }
+
+/* Living gradient — gradient text slowly shimmers */
+@keyframes shine {
+  to { background-position: 180% center; }
+}
+.grad, .kicker, .stat .num, .t-item .when, .logo span {
+  background-size: 180% auto;
+  animation: shine 7s linear infinite;
+}
+
+/* Hero island internals */
+.hero-inner { position: relative; }
+.hero-content { position: relative; z-index: 1; }
+.hero-glow {
+  position: absolute; top: 0; left: 0; z-index: 0;
+  width: 460px; height: 460px; margin: -230px 0 0 -230px;
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(162, 89, 255, 0.17), rgba(0, 144, 255, 0.09) 45%, transparent 68%);
+}
+.hero-chip {
+  position: absolute; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255, 255, 255, 0.68);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 30px rgba(31, 38, 135, 0.14);
+  border-radius: 980px; padding: 9px 17px;
+  font-size: 0.86rem; font-weight: 600; color: var(--ink);
+  cursor: grab; user-select: none; white-space: nowrap;
+}
+.hero-chip .chip-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+@media (max-width: 1023px) { .hero-chip { display: none; } }
+
+/* Tech marquee */
+.marquee {
+  overflow: hidden; padding: 20px 0;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.marquee-track { display: flex; width: max-content; will-change: transform; }
+.marquee-group { display: flex; align-items: center; flex: none; }
+.marquee-item {
+  display: inline-flex; align-items: center; white-space: nowrap;
+  font-size: 1.02rem; font-weight: 600; letter-spacing: -0.01em; color: var(--ink);
+}
+.marquee-item i {
+  font-style: normal; margin: 0 46px; font-size: 0.8rem;
+  background: var(--grad);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Ambient cursor glow (GSAP quickTo follower) */
+#cursorGlow {
+  position: fixed; top: 0; left: 0; z-index: 1;
+  width: 540px; height: 540px; border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(0, 144, 255, 0.09), rgba(162, 89, 255, 0.07) 42%, transparent 65%);
+}
+@media (pointer: coarse) { #cursorGlow { display: none; } }
+
+/* Header state + card glow ring */
+header.site.scrolled {
+  background: rgba(251, 251, 253, 0.88);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10);
+}
+.card:hover {
+  box-shadow: var(--shadow-lift), 0 0 0 1px rgba(162, 89, 255, 0.22), 0 18px 50px -14px rgba(0, 144, 255, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .hero::after, .grad, .kicker, .stat .num, .t-item .when, .logo span {
+    animation: none !important;
+  }
+}
