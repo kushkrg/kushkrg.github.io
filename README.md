@@ -1,1 +1,28 @@
-IyBMYXZrdXNoIEt1bWFyIOKAlCBQb3J0Zm9saW8gKEFzdHJvKQoKUGVyc29uYWwgcG9ydGZvbGlvIG9mICoqTGF2a3VzaCBLdW1hcioqLCBGdWxsIFN0YWNrIFdlYiBEZXZlbG9wZXIKKFJlYWN0LCBOZXh0LmpzLCBQSFAsIE1FUk4pLCBNYXJrZXRpbmcgV2ViIERldmVsb3BlciBhdCBDUyBESVNDTyBhbmQgY3JlYXRvciBvZgpbQ29kaW5nIEN1c2hdKGh0dHBzOi8vY29kaW5nY3VzaC5jb20pLgoKQnVpbHQgd2l0aCBbQXN0cm9dKGh0dHBzOi8vYXN0cm8uYnVpbGQpIOKAlCBzZXJ2ZXItcmVuZGVyZWQsIHplcm8gSmF2YVNjcmlwdCBieQpkZWZhdWx0LCBpbnRlcmFjdGl2ZSBvbmx5IHdoZXJlIGl0IGVhcm5zIGl0LgoKLSBMaXZlOiBodHRwczovL2t1c2hrcmcuZ2l0aHViLmlvCi0gTWFpbiB3ZWJzaXRlOiBodHRwczovL2xhdmt1c2hrdW1hci5jb20KCiMjIERldmVsb3AKCmBgYGJhc2gKbnBtIGluc3RhbGwKbnBtIHJ1biBkZXYKYGBgCgojIyBCdWlsZAoKYGBgYmFzaApucG0gcnVuIGJ1aWxkICAgIyBvdXRwdXRzIGRpc3QvCm5wbSBydW4gcHJldmlldwpgYGAKCkRlcGxveW1lbnQgdG8gR2l0SHViIFBhZ2VzIHJ1bnMgYXV0b21hdGljYWxseSBvbiBldmVyeSBwdXNoIHRvIGBtYWluYAp2aWEgYC5naXRodWIvd29ya2Zsb3dzL2RlcGxveS55bWxgLgo=
+# Lavkush Kumar — Portfolio (Astro)
+
+Personal portfolio of **Lavkush Kumar**, Full Stack Web Developer
+(React, Next.js, PHP, MERN), Marketing Web Developer at CS DISCO and creator of
+[Coding Cush](https://codingcush.com).
+
+Built with [Astro](https://astro.build) — server-rendered, zero JavaScript by
+default, interactive only where it earns it.
+
+- Live: https://kushkrg.github.io
+- Main website: https://lavkushkumar.com
+
+## Develop
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build   # outputs dist/
+npm run preview
+```
+
+Deployment to GitHub Pages runs automatically on every push to `main`
+via `.github/workflows/deploy.yml`.
