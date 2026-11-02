@@ -1,1 +1,4 @@
-bm9kZV9tb2R1bGVzLwpkaXN0LwouYXN0cm8vCi5EU19TdG9yZQo=
+node_modules/
+dist/
+.astro/
+.DS_Store
