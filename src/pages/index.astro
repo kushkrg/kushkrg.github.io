@@ -1,0 +1,428 @@
+---
+import Base from '../layouts/Base.astro';
+
+const services = [
+  {
+    icon: '🖥️',
+    title: 'Web Applications',
+    text: 'React, Next.js & Tailwind CSS front-ends backed by Strapi, Node.js, MongoDB & MySQL.',
+  },
+  {
+    icon: '📱',
+    title: 'Android Apps',
+    text: 'Native Android applications, from concept through Play Store deployment.',
+  },
+  {
+    icon: '🎨',
+    title: 'Design-led Builds',
+    text: 'Figma, Webflow, WordPress & Shopify — pixel-perfect design handoffs, done right.',
+  },
+  {
+    icon: '🔌',
+    title: 'APIs & Databases',
+    text: 'Strapi headless CMS, REST APIs, MongoDB & MySQL schema design.',
+  },
+  {
+    icon: '🚀',
+    title: 'Deployment',
+    text: 'Vercel, Netlify & Git-based CI workflows — shipped fast, shipped reliably.',
+  },
+  {
+    icon: '📈',
+    title: 'SEO & Growth',
+    text: 'Technical SEO baked into every build for real e-commerce & marketing results.',
+  },
+];
+
+const skillGroups = [
+  {
+    title: 'Frontend',
+    items: ['React', 'Next.js', 'Astro', 'Tailwind CSS', 'JavaScript', 'HTML5', 'CSS3', 'Webflow', 'Figma'],
+  },
+  {
+    title: 'Backend, CMS & Ecommerce',
+    items: ['Node.js', 'Express', 'Strapi', 'PHP', 'WordPress', 'Shopify', 'MongoDB', 'MySQL'],
+  },
+  {
+    title: 'Languages',
+    items: ['JavaScript', 'PHP', 'Python', 'Java', 'C', 'C++', 'C#', 'Kotlin'],
+  },
+  {
+    title: 'Mobile, Deployment & Tools',
+    items: ['Android', 'Kotlin', 'Play Store', 'Vercel', 'Netlify', 'Git', 'GitHub', 'Technical SEO'],
+  },
+];
+
+const levels = [
+  ['Figma', 92],
+  ['WordPress', 86],
+  ['Shopify', 85],
+  ['Webflow', 80],
+  ['JavaScript', 80],
+  ['React / Next.js', 78],
+  ['Deployment (Vercel / Netlify)', 75],
+  ['Strapi / Node.js', 72],
+  ['MongoDB / MySQL', 70],
+  ['PHP', 70],
+  ['Android (Kotlin)', 62],
+  ['SEO', 60],
+];
+
+const experience = [
+  {
+    when: '2025 — Present',
+    role: 'Marketing Web Developer',
+    org: 'CS DISCO',
+    text: 'Building and maintaining marketing websites and landing pages, integrating CMS workflows and modern front-end tooling to support fast-moving campaigns.',
+  },
+  {
+    when: '2023 — 2025',
+    role: 'Webflow & WordPress Developer',
+    org: 'MarsDevs',
+    text: 'Delivered Webflow & WordPress builds for agency clients, translating Figma designs into responsive, production-ready sites end to end.',
+  },
+  {
+    when: '2022 — 2023',
+    role: 'Website Developer',
+    org: 'Learning Routes Pvt. Ltd.',
+    text: "Built and maintained the company's education-platform website, working closely with design and content teams on new feature rollouts.",
+  },
+  {
+    when: '2020 — 2022',
+    role: 'Web Developer',
+    org: 'Skillacquire & Freelance',
+    text: 'Started out building websites for small businesses and startups — where the full-stack curiosity (and the JavaScript/React/PHP habit) began.',
+  },
+];
+
+const projects = [
+  {
+    title: 'CodingCush.com',
+    text: 'My free programming-education platform: a daily tutorial blog, a full student LMS with assignments, online exams and verifiable certificates, and free developer tools.',
+    tags: ['PHP', 'MySQL', 'JavaScript'],
+    link: 'https://codingcush.com',
+    label: 'Visit site',
+  },
+  {
+    title: 'Coding Cush Shop',
+    text: 'A Next.js digital-products store selling final-year project packages with Razorpay checkout and secure, signed download delivery.',
+    tags: ['Next.js', 'React', 'Razorpay'],
+    link: 'https://shop.codingcush.com',
+    label: 'Visit store',
+  },
+  {
+    title: 'Evolvcode.com',
+    text: 'Agency website redesign and performance rebuild — services hub, daily resources and a full SEO/perf pass on a custom PHP CMS.',
+    tags: ['PHP', 'MySQL', 'SEO'],
+    link: 'https://evolvcode.com',
+    label: 'Visit site',
+  },
+  {
+    title: 'Galaxy Shooter',
+    text: 'A complete 2D space shooter built in Godot 4 — enemies, bosses, power-ups and touch controls, exported for web and Android from one codebase.',
+    tags: ['Godot', 'GDScript', 'Game Dev'],
+    link: 'https://github.com/kushkrg/galaxy-shooter-game',
+    label: 'View on GitHub',
+  },
+  {
+    title: 'Mini Postman',
+    text: 'A lightweight API testing tool in pure Python (standard library only) — requests, environments, saved collections and response inspection.',
+    tags: ['Python', 'API Tooling'],
+    link: 'https://github.com/kushkrg/mini-postman',
+    label: 'View on GitHub',
+  },
+  {
+    title: 'Society Management System',
+    text: 'A complete housing-society system in PHP & MySQL — maintenance billing with receipts, complaints, visitor register and facility bookings. Free source code.',
+    tags: ['PHP', 'MySQL', 'Open Source'],
+    link: 'https://github.com/kushkrg/Advanced-Society-Management-System',
+    label: 'View on GitHub',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Who is Lavkush Kumar?',
+    a: 'Lavkush Kumar is a Full Stack Web Developer based in Delhi, India, with 5+ years of experience. He works as a Marketing Web Developer at CS DISCO and builds web applications with React, Next.js, PHP and the MERN stack, plus Android apps, WordPress, Shopify and Webflow sites.',
+  },
+  {
+    q: 'What services does Lavkush Kumar offer?',
+    a: 'Full-stack web application development (React, Next.js, Node.js, Strapi, PHP), ecommerce builds (Shopify and WordPress), Webflow and WordPress websites, native Android app development, and technical SEO. Freelance rates start at $20/hour for implementation work and $40/hour for full design-plus-build projects.',
+  },
+  {
+    q: 'What is Coding Cush?',
+    a: 'Coding Cush is the free programming-education platform created by Lavkush Kumar. It includes the Coding Cush YouTube channel, which publishes coding tutorials and interview-question Shorts, and the CodingCush.com blog, which publishes in-depth programming tutorials, final-year project guides and free developer tools.',
+  },
+  {
+    q: 'Where can I learn programming from Lavkush Kumar?',
+    a: 'For free on the Coding Cush YouTube channel and on CodingCush.com — covering PHP, JavaScript, Python, SQL, web development and final-year project guides for BCA, MCA and B.Tech students.',
+  },
+  {
+    q: 'How can I hire Lavkush Kumar?',
+    a: 'By emailing hello@lavkushkumar.com. He is available for freelance projects and full-time roles, working remotely from India.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Base>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <span class="badge">Available for freelance &amp; full-time roles</span>
+      <h1>Lavkush Kumar<br /><span class="grad">Full Stack Developer</span></h1>
+      <p class="role">React · Next.js · PHP · MERN · Android</p>
+      <p class="lede">
+        I design and build complete digital products — from pixel-perfect React &amp; Next.js
+        front-ends to Strapi, MongoDB &amp; MySQL backends, deployed and shipped end-to-end.
+        I also build Android apps, and still craft Webflow, WordPress &amp; Shopify sites when
+        that's the right tool for the job.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">See My Work</a>
+        <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+        <a class="btn btn-ghost" href="https://github.com/kushkrg" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">5+</div><div class="lbl">Years Experience</div></div>
+        <div class="stat"><div class="num">150+</div><div class="lbl">Tutorials Published</div></div>
+        <div class="stat"><div class="num">90+</div><div class="lbl">Course Videos</div></div>
+        <div class="stat"><div class="num">25+</div><div class="lbl">Tech &amp; Tools</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <span class="kicker">About Me</span>
+      <h2 class="section-title">Turning ideas into shipped products.</h2>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>
+            I've been building for the web for <strong>nearly 5 years</strong> — freelance and
+            in-house, across agencies and startups. What started with Figma-to-Webflow builds,
+            WordPress and Shopify sites has grown into full end-to-end product development:
+            React &amp; Next.js front-ends, Strapi &amp; Node.js APIs, MongoDB &amp; MySQL
+            databases, native Android apps, and getting it all deployed and running in production.
+          </p>
+          <p>
+            Quietly confident, naturally curious, and perpetually working on improving my craft —
+            one problem at a time.
+          </p>
+          <p>
+            Alongside client work, I run <a href="https://codingcush.com" target="_blank" rel="noopener"><strong>Coding Cush</strong></a> —
+            my free programming-education platform. On the
+            <a href="https://www.youtube.com/@CodingCush" target="_blank" rel="noopener">Coding Cush YouTube channel</a>
+            and the CodingCush.com blog, I publish programming tutorials, interview prep and
+            final-year project guides for students and developers.
+          </p>
+        </div>
+        <ul class="facts reveal">
+          <li><span class="k">Based in</span>Delhi, India (Remote)</li>
+          <li><span class="k">Availability</span>Open to work</li>
+          <li><span class="k">Focus</span>Full Stack + Mobile</li>
+          <li><span class="k">Currently</span>Marketing Web Developer at CS DISCO</li>
+          <li><span class="k">Education</span>MCA (AI), Amity University · BCA, VKS University</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="alt">
+    <div class="wrap">
+      <span class="kicker">What I Do</span>
+      <h2 class="section-title">Services</h2>
+      <p class="section-sub">Complete builds, handled end-to-end — design, development, deployment and growth.</p>
+      <div class="grid grid-3">
+        {services.map((s) => (
+          <article class="card reveal">
+            <span class="icon">{s.icon}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <span class="kicker">Skills &amp; Tech Stack</span>
+      <h2 class="section-title">Tools I build with</h2>
+      <p class="section-sub">A full-stack toolkit — from front-end frameworks to databases, mobile and deployment.</p>
+      <div class="grid grid-2" style="margin-bottom:44px">
+        {skillGroups.map((g) => (
+          <div class="skill-group reveal">
+            <h3>{g.title}</h3>
+            <div class="chips">
+              {g.items.map((item) => <span class="chip">{item}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="grid grid-2">
+        {levels.map(([name, pct]) => (
+          <div class="bar-row reveal">
+            <div class="bar-head"><span>{name}</span><span>{pct}%</span></div>
+            <div class="bar"><i style={`width:${pct}%`}></i></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="alt">
+    <div class="wrap">
+      <span class="kicker">Experience</span>
+      <h2 class="section-title">Where I've worked</h2>
+      <p class="section-sub">Five years across agencies, startups, an ed-tech platform and a global legal-tech company.</p>
+      <div class="timeline">
+        {experience.map((job) => (
+          <div class="t-item reveal">
+            <div class="when">{job.when}</div>
+            <h3>{job.role}</h3>
+            <div class="org">{job.org}</div>
+            <p>{job.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <span class="kicker">Portfolio</span>
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-sub">A mix of platforms I run, client work, and open-source projects — all shipped and live.</p>
+      <div class="grid grid-3">
+        {projects.map((p) => (
+          <article class="card reveal">
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+            <div class="tags">
+              {p.tags.map((t) => <span class="tag">{t}</span>)}
+            </div>
+            <a class="ext" href={p.link} target="_blank" rel="noopener">{p.label} →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CREATOR -->
+  <section id="creator" class="alt">
+    <div class="wrap">
+      <span class="kicker">Creator</span>
+      <h2 class="section-title">I also teach — Coding Cush</h2>
+      <p class="section-sub">
+        Beyond client work, I run Coding Cush, a free programming-education platform. Watch the
+        tutorials on YouTube, or read the in-depth guides on the blog.
+      </p>
+      <div class="grid grid-2">
+        <article class="card reveal">
+          <span class="icon">▶️</span>
+          <h3>Coding Cush on YouTube</h3>
+          <p>
+            Video tutorials and coding Shorts — programming concepts, interview questions and
+            project walkthroughs in Python, JavaScript, PHP, SQL and more, taught in simple language.
+          </p>
+          <a class="ext" href="https://www.youtube.com/@CodingCush" target="_blank" rel="noopener">Watch &amp; Subscribe →</a>
+        </article>
+        <article class="card reveal">
+          <span class="icon">📚</span>
+          <h3>CodingCush.com — the blog</h3>
+          <p>
+            In-depth written tutorials, final-year project guides for BCA, MCA and B.Tech students,
+            and free online developer tools — new posts published every day.
+          </p>
+          <a class="ext" href="https://codingcush.com" target="_blank" rel="noopener">Read the Blog →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <span class="kicker">Pricing</span>
+      <h2 class="section-title">Simple, flexible rates</h2>
+      <p class="section-sub">For freelance and contract work. Full-time roles — let's talk.</p>
+      <div class="grid grid-2" style="max-width:820px">
+        <article class="card price reveal">
+          <h3>Basic</h3>
+          <div class="amount">$20 <small>/ hour</small></div>
+          <ul>
+            <li>Implement existing designs</li>
+            <li>React, Next.js, WordPress, Webflow, PHP</li>
+            <li>Deployment to Vercel / Netlify</li>
+            <li>6-month support included</li>
+          </ul>
+          <a class="btn btn-ghost" href="#contact">Get Started</a>
+        </article>
+        <article class="card price featured reveal">
+          <span class="ribbon">Recommended</span>
+          <h3>Premium</h3>
+          <div class="amount">$40 <small>/ hour</small></div>
+          <ul>
+            <li>Full design in Figma + build</li>
+            <li>Full-stack builds: React/Next.js, Strapi, MongoDB, MySQL</li>
+            <li>Android app development on request</li>
+            <li>12-month support included</li>
+          </ul>
+          <a class="btn btn-primary" href="#contact">Get Started</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <span class="kicker">FAQ</span>
+      <h2 class="section-title">Quick answers</h2>
+      <p class="section-sub">The questions people ask most.</p>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details class="reveal">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <h2>Let's build something great</h2>
+        <p>Web app, ecommerce store, or Android app — tell me about your project.</p>
+        <a class="btn btn-primary" href="mailto:hello@lavkushkumar.com">hello@lavkushkumar.com</a>
+        <div class="socials">
+          <a href="https://github.com/kushkrg" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/kushkrg/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/kushkrg" target="_blank" rel="noopener">X (Twitter)</a>
+          <a href="https://www.instagram.com/codingcush" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com/@CodingCush" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
